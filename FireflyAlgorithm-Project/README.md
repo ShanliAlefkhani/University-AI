@@ -1,3 +1,3 @@
 # Firefly Algorithm: 
 
-![nqueen board](nQueen.jpg)
+![Firefly](firefly.jpg)
