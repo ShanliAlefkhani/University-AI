@@ -1,3 +1,3 @@
-# Firefly Algorithm: 
+# Firefly Algorithm
 
 ![Firefly](firefly.jpg)
