@@ -1,5 +1,6 @@
 from random import randint
 from collections import Counter
+import time
 
 
 def board(i, j, state):
@@ -35,17 +36,23 @@ def get_neighbour(state):
 	return op_state
 
 
+def print_board(state):
+	print("\033[F"*(n + 1))
+	print("\n".join(" ".join("\u2655" if board(i, j, state) else "." for j in range(n))for i in range(n)))
+	time.sleep(2)
+
+
 if __name__ == "__main__":
 	n = int(input())
 	state = [randint(0, n - 1) for _ in range(n)]
-
+	print("\n"*(n + 1), end="")
 	while True:
 		next_state = get_neighbour(state.copy())
 
 		if state == next_state:
-			print("\n".join(" ".join(str(board(i, j, state)) for j in range(n))for i in range(n)))
+			print_board(state)
 			break
 		elif calculate_objective(state) == calculate_objective(next_state):
 			next_state[randint(0, n - 1)] = randint(0, n - 1)
-
+		print_board(state)
 		state = next_state
