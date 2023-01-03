@@ -1,22 +1,5 @@
 from random import randint
-from collections import Counter
-import time
-
-
-def board(i, j, state):
-	return int(state[j] == i)
-
-
-def calculate_objective(state):
-	x = 0
-	for v in Counter(state).values():
-		x += v * (v - 1) / 2
-
-	for i in range(len(state)):
-		for j in range(i + 1, len(state)):
-			if abs(i - j) == abs(state[i] - state[j]):
-				x += 1
-	return int(x)
+from utils import calculate_objective, print_board
 
 
 def get_neighbour(state):
@@ -34,12 +17,6 @@ def get_neighbour(state):
 					op_obj = neighbour_obj
 					op_state = neighbour_state.copy()
 	return op_state
-
-
-def print_board(state):
-	print("\033[F"*(n + 1))
-	print("\n".join(" ".join("\u2655" if board(i, j, state) else "." for j in range(n))for i in range(n)))
-	time.sleep(2)
 
 
 if __name__ == "__main__":
