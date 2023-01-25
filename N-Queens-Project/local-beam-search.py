@@ -1,5 +1,3 @@
-import random
-
 from utils import get_neighbours, get_random_neighbours, get_random_state, print_board, calculate_objective, select_best_neighbours
 
 
