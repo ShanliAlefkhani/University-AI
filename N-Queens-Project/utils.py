@@ -1,4 +1,3 @@
-import time
 from collections import Counter
 import random
 
@@ -22,7 +21,6 @@ def calculate_objective(state):
 def print_board(state):
 	print("\033[F"*(len(state) + 1))
 	print("\n".join(" ".join("\u2655" if board(i, j, state) else "." for j in range(len(state)))for i in range(len(state))))
-	time.sleep(2)
 
 
 def get_neighbours(state=[]):
