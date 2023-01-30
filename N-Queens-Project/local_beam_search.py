@@ -1,12 +1,14 @@
 from utils import get_neighbours, get_random_neighbours, get_random_state, print_board, calculate_objective, select_best_neighbours
 
 
-def local_beam_search(n, k):
+def local_beam_search(n, k=10):
     state = get_random_state(n)
     print("\n"*(n + 1), end="")
     k_states = get_random_neighbours(state, k)
+    itr = 0
 
-    while calculate_objective(state):
+    while calculate_objective(state) and itr < 1000:
+        itr += 1
         print_board(state)
         next_state_canditates = []
         for state in k_states:

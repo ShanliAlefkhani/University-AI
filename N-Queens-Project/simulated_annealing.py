@@ -11,7 +11,7 @@ def simulated_annealing(n):
     state = get_random_state(n)
     print("\n"*(n + 1), end="")
 
-    while calculate_objective(state) or temperature == 0:
+    while calculate_objective(state) and temperature > 0.2:
         print_board(state)
         temperature *= schedule
         next_state = get_random_neighbours(state.copy())[0]
