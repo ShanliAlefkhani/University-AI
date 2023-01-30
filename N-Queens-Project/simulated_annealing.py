@@ -22,3 +22,4 @@ def simulated_annealing(n):
             state = next_state
 
     print_board(state)
+    return state

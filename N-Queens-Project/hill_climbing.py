@@ -12,3 +12,5 @@ def hill_climbing(n):
 		if calculate_objective(state) <= calculate_objective(next_state):
 			break
 		state = next_state
+	
+	return state

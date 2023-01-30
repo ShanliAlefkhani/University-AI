@@ -16,3 +16,4 @@ def local_beam_search(n, k):
         state = select_best_neighbours(k_states)[0]
 
     print_board(state)
+    return state

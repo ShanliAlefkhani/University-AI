@@ -46,22 +46,20 @@ def mutate(state):
     return state
 
 
-def found_goal(states):
-    for state in states:
-        if calculate_objective(state) == 0:
-            return True
-    return False
-
-
 def genetic(n):
-    population = [get_random_state(n) for _ in range(POPULATION_SIZE)]
+    population = sorted(
+        [get_random_state(n) for _ in range(POPULATION_SIZE)], 
+        key=lambda ind: fitness_score(ind), 
+        reverse=True
+    )[:POPULATION_SIZE]
     print("\n"*(n + 1), end="")
         
-    while not found_goal(population):
-        print_board(sorted(population, key=lambda ind: fitness_score(ind), reverse=True)[0])
+    while calculate_objective(population[0]):
+        print_board(population[0])
         parents = random_selection(population, n)
         offsprings = list(map(mutate, crossover(parents, n)))
         new_gen = offsprings + population
         population =  sorted(new_gen, key=lambda ind: fitness_score(ind), reverse=True)[:POPULATION_SIZE]
 
-    print_board(sorted(population, key=lambda ind: fitness_score(ind), reverse=True)[0])
+    print_board(population[0])
+    return population[0]
