@@ -32,6 +32,7 @@ def firefly(n):
     new_alpha = ALPHA
     search_range = ub - lb
     f = fireflies[np.argmin(intensity)]
+    print("\n"*(n + 1), end="")
 
     while evaluations <= MAX_EVALS:
         new_alpha *= 0.99
@@ -48,7 +49,9 @@ def firefly(n):
                     if intensity[i] < best:
                         best = intensity[i]
                         f = fireflies[i].copy()
-    print(f)
+                        print("\033[F"*(n + 1))
+                        print("\n".join(" ".join("\u2655" if f[i][j] else "." for j in range(n))for i in range(n)))
+
     print()
     print(best)
     return best
